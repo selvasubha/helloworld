@@ -1,0 +1,66 @@
+<html>
+<head>My Form</head>
+<script type="text/javascript">
+
+function isValidEmail(str)  //valid email?
+{
+return (str.indexOf("@") > 0);
+} 
+
+function validator(myform)  //required fields
+{
+if(myform.firstname.value=="")
+{
+alert("Please tell us your name");
+myform.firstname.focus();
+return false;
+}
+
+if(!isValidEmail(myform.email.value))
+{
+alert("Please give valid email address");
+myform.email.focus();
+return false;
+}
+if(myform.country.value=="")
+{
+alert("Please select your country");
+myform.country.focus();
+return false;
+}
+if ((myform.gender[0].checked ==false) && ( myform.gender[1].checked==false))
+ {
+  alert("Please select your gender");
+ // myform.gender.focus();
+  return false;
+ }
+if(myform.interests[0].checked==false && myform.interests[1].checked==false && myform.interests[2].checked==false)
+{
+alert("Please select an interest of yours");
+myform.interests.focus();
+return false;
+}
+
+ }
+</script>
+
+
+<body>
+<form name="myform" id="myform" method="post" action="values.asp" onsubmit="return validator(this)">
+Name:<input type="text" name="firstname" id="firstname" value="" /><br>
+Email Address:<input type="text" name="email" id="email" value="" /><br>
+Country:<select name="country" id="country">
+<option value="">Select Country</option> 
+<option value="United States">United States</option> 
+<option value="United Kingdom">United Kingdom</option> 
+<option value="Afghanistan">Afghanistan</option> 
+</select><br>
+Gender:<input type="radio" name="gender" value="male">Male
+<input type="radio" name="gender" value="female">Female<br>
+Interests:<input type="checkbox" name="interests" value="Music" id="Music">Music
+<input type="checkbox" name="interests" value="Novels" id="Novels">Novels
+<input type="checkbox" name="interests" value="Art" id="Art">Art<br>
+
+<input type="submit" value="Submit">
+</body>
+<html>
